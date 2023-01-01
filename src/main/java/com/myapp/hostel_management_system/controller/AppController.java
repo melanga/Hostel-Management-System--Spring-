@@ -9,9 +9,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class AppController {
-    @RequestMapping(method = RequestMethod.POST, value = "/greeting")
-    public String error() {
-        return "app/error";
+    @RequestMapping(method = RequestMethod.GET, value = "/home")
+    public String home() {
+        // if user is logged in return home
+        return "app/home";
     }
 
     @GetMapping("/greeting")
