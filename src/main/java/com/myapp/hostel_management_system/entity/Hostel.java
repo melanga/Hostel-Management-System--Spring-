@@ -9,16 +9,17 @@ import java.util.List;
 public class Hostel {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private String id;
     @Column
     private String name;
     @Column
     private String address;
     @Column
-    private int capacity;
-    @OneToMany(mappedBy = "hostel")
-    private List<Student> students;
+    private String capacity;
+
+//    @OneToMany(mappedBy = "hostel")
+//    private List<Student> students;
 
     public Hostel() {
     }
@@ -39,19 +40,19 @@ public class Hostel {
         this.address = address;
     }
 
-    public int getCapacity() {
+    public String getCapacity() {
         return capacity;
     }
 
-    public void setCapacity(int capacity) {
+    public void setCapacity(String capacity) {
         this.capacity = capacity;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 }

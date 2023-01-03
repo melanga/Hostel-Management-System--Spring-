@@ -1,10 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Hostel</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
 
+<div class="container">
+    <div class="row">
+        <h1>List of Hostels</h1>
+    </div>
+    <div class="row">
+        <div class="col-lg-3">
+            <a th:href="@{/hostels/add}" class="btn btn-primary  btn-sm mb-3">Add Hostel</a>
+        </div>
+    </div>
+    <table class="table table-striped table-bordered">
+        <thead class="table-dark">
+        <tr>
+            <th>Hostel Name </th>
+            <th>Address </th>
+            <th>Capacity  </th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each = "hostel: ${hostels}">
+            <td th:text="${hostel.name}"></td>
+            <td th:text="${hostel.address}"></td>
+            <td th:text="${hostel.capacity}"></td>
+            <td>
+                <button class="btn btn-primary btn-sm">Update</button>
+                <button class="btn btn-danger btn-sm" >Delete</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>

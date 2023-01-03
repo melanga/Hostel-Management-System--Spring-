@@ -40,7 +40,7 @@ public class StudentController {
 
     @PostMapping("/admin-students")
     public String saveStudent(@ModelAttribute("students") Student student, BindingResult result){
-        System.out.println("Stude"+student);
+//        System.out.println("Stude"+student);
         studentService.studentSave(student);
         return "redirect:/admin-students";
     }
