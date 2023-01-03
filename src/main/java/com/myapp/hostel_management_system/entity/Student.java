@@ -1,11 +1,14 @@
 package com.myapp.hostel_management_system.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "students")
 public class Student extends User {
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id")
+    private Hostel hostel;
+
     public Student() {
     }
 }

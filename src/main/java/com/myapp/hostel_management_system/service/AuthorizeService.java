@@ -19,6 +19,7 @@ public class AuthorizeService {
     public AuthorizeService() {
     }
 
+    // TODO: look again about authorization
     public boolean student(User user) {
 
         if (request.getSession().getAttribute("user") != null) {

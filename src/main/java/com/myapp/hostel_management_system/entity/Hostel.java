@@ -2,6 +2,8 @@ package com.myapp.hostel_management_system.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "hostels")
 public class Hostel {
@@ -15,6 +17,8 @@ public class Hostel {
     private String address;
     @Column
     private int capacity;
+    @OneToMany(mappedBy = "hostel")
+    private List<Student> students;
 
     public Hostel() {
     }
