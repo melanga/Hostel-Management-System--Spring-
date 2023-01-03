@@ -9,6 +9,11 @@ public class Student extends User {
     @JoinColumn(name = "hostel_id")
     private Hostel hostel;
 
-    public Student() {
+    public Student(){}
+    public Student(String firstname,String lastname,String email) {
+       super();
+        this.setFirstname(firstname);
+        this.setLastname(lastname);
+        this.setEmail(email);
     }
 }
