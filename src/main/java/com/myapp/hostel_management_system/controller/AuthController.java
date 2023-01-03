@@ -5,6 +5,7 @@ import com.myapp.hostel_management_system.entity.User;
 import com.myapp.hostel_management_system.repository.StudentRepository;
 import com.myapp.hostel_management_system.repository.UserRepository;
 import com.myapp.hostel_management_system.repository.WardenRepository;
+import com.myapp.hostel_management_system.service.AuthorizeService;
 import com.myapp.hostel_management_system.util.MD5;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -17,6 +18,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class AuthController {
     @Autowired
+    AuthorizeService authorizeService;
+    @Autowired
     UserRepository userRepository;
     @Autowired
     StudentRepository studentRepository;
@@ -25,6 +28,9 @@ public class AuthController {
 
     @GetMapping("/register")
     public String register() {
+        if (authorizeService.isAuthorized()) {
+            return "redirect:/home";
+        }
         return "auth/register";
     }
 
@@ -46,6 +52,9 @@ public class AuthController {
 
     @GetMapping("/login")
     public String viewLogin() {
+        if (authorizeService.isAuthorized()) {
+            return "redirect:/home";
+        }
         return "auth/login";
     }
 
