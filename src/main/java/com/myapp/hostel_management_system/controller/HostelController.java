@@ -37,8 +37,26 @@ public class HostelController {
         hostelService.hostelSave(hostel);
         return "redirect:/hostels";
     }
+    @GetMapping("/hostels/edit/{id}")
+    public String EditHostel(@PathVariable String id,Model model){
+        model.addAttribute("hostels",hostelService.getHostelById(id));
+        return "hostel/edit";
+    }
 
-
+    @PostMapping("/hostels/{id}")
+    public String updateHostel(@PathVariable String id,
+                               @ModelAttribute("hostels") Hostel hostel,
+                               Model model){
+//        get hostel from db
+        Hostel existingHostel = hostelService.getHostelById(id);
+        existingHostel.setId(id);
+        existingHostel.setName(hostel.getName());
+        existingHostel.setAddress(hostel.getAddress());
+        existingHostel.setCapacity(hostel.getCapacity());
+        //Save to db
+        hostelService.updateHostel(existingHostel);
+        return "redirect:/hostels";
+    }
     @GetMapping("{id}")
     public String getAHostel(Model model, @PathVariable Long id) {
 //        var result = hostelService.findById(id);

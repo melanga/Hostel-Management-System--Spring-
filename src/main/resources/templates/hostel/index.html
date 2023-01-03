@@ -31,7 +31,8 @@
             <td th:text="${hostel.address}"></td>
             <td th:text="${hostel.capacity}"></td>
             <td>
-                <button class="btn btn-primary btn-sm">Update</button>
+<!--                <button class="btn btn-primary btn-sm">Update</button>-->
+                <a th:href="@{/hostels/edit/{id}(id=${hostel.id})}" class="btn btn-primary btn-sm">Update</a>
                 <button class="btn btn-danger btn-sm" >Delete</button>
             </td>
         </tr>

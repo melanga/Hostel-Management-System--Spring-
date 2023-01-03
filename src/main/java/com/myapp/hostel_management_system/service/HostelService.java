@@ -21,4 +21,10 @@ public class HostelService {
     public Hostel hostelSave(Hostel hostel){
         return hostelRepository.save(hostel);
     }
+    public Hostel getHostelById(String id){
+        return hostelRepository.findById(id).get();
+    }
+    public Hostel updateHostel(Hostel hostel){
+        return hostelRepository.save(hostel);
+    }
 }
