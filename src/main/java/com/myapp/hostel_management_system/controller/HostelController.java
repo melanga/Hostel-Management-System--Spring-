@@ -4,10 +4,7 @@ import com.myapp.hostel_management_system.entity.Hostel;
 import com.myapp.hostel_management_system.repository.HostelRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/hostel")
@@ -36,8 +33,8 @@ public class HostelController {
         return "hostel/index";
     }
 
-    @GetMapping()
-    public String getAHostel(@RequestParam(name = "id") Long id, Model model) {
+    @GetMapping("{id}")
+    public String getAHostel(Model model, @PathVariable Long id) {
         var result = hostelRepository.findById(id);
         if (!result.isEmpty()) {
             Hostel hostel = result.get();

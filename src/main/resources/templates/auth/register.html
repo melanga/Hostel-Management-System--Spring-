@@ -2,11 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>login</title>
+    <title>Title</title>
 </head>
 <body>
-<form action="/login" method="post">
+<form action="/register" method="post">
     <table>
+        <tr>
+            <td>Firstname</td>
+            <td><input name="firstname" type="text"/></td>
+        </tr>
+        <tr>
+            <td>Lastname</td>
+            <td><input name="lastname" type="text"/></td>
+        </tr>
         <tr>
             <td>Email</td>
             <td><input name="email" type="email"/></td>
@@ -17,7 +25,7 @@
         </tr>
         <tr>
             <td></td>
-            <td><input type="submit" value="login"/></td>
+            <td><input type="submit" value="register"/></td>
         </tr>
     </table>
 </form>
