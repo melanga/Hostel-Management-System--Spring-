@@ -45,7 +45,11 @@ public class AuthController {
     }
 
     @GetMapping("/login")
-    public String viewLogin() {
+    public String viewLogin(HttpServletRequest request) {
+        User user = (User) request.getSession().getAttribute("user");
+        if (user != null) {
+            return "redirect:/home";
+        }
         return "auth/login";
     }
 
