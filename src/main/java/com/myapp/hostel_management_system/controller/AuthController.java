@@ -29,11 +29,9 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public String registerUser(User user, Model model) {
+    public String registerUser(Student student, Model model) {
         try {
-            if (user.getEmail().endsWith("@std.uwu.ac.lk")) {
-                // create Student object using User object
-                Student student = (Student) user;
+            if (student.getEmail().endsWith("@std.uwu.ac.lk")) {
                 studentRepository.save(student);
                 model.addAttribute("msg", "Account created successfully");
             } else {
@@ -55,10 +53,11 @@ public class AuthController {
     public String loginUser(User user, Model model, HttpSession session) {
         User dbUser = userRepository.getReferenceByEmail(user.getEmail());
         if (dbUser != null) {
-            if (dbUser.getPassword().equals(MD5.getMd5(user.getPassword()))) {
+            if (dbUser.getPassword().equals(user.getPassword())) {
+                System.out.println("Login success");
                 model.addAttribute("msg", "Welcome " + dbUser.getFirstname() + " " + dbUser.getLastname());
                 session.setAttribute("user", dbUser);
-                return "app/home";
+                return "redirect:/home";
             } else {
                 model.addAttribute("error", "Invalid password");
             }
