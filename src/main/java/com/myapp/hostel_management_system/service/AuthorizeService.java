@@ -16,6 +16,9 @@ public class AuthorizeService {
     @Autowired
     WardenRepository wardenRepository;
 
+    public AuthorizeService() {
+    }
+
     public boolean student(User user) {
 
         if (request.getSession().getAttribute("user") != null) {
