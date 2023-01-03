@@ -33,7 +33,7 @@
             <td>
 <!--                <button class="btn btn-primary btn-sm">Update</button>-->
                 <a th:href="@{/hostels/edit/{id}(id=${hostel.id})}" class="btn btn-primary btn-sm">Update</a>
-                <button class="btn btn-danger btn-sm" >Delete</button>
+                <a th:href="@{/hostels/{id}(id=${hostel.id})}" class="btn btn-danger btn-sm">Delete</a>
             </td>
         </tr>
         </tbody>

@@ -57,13 +57,10 @@ public class HostelController {
         hostelService.updateHostel(existingHostel);
         return "redirect:/hostels";
     }
-    @GetMapping("{id}")
-    public String getAHostel(Model model, @PathVariable Long id) {
-//        var result = hostelService.findById(id);
-//        if (!result.isEmpty()) {
-//            Hostel hostel = result.get();
-//            model.addAttribute(hostel);
-//        }
-        return "hostel/view";
+    @GetMapping("/hostels/{id}")
+    public String deleteHostel(@PathVariable String id){
+        hostelService.deleteHostelById(id);
+        return "redirect:/hostels";
+
     }
 }

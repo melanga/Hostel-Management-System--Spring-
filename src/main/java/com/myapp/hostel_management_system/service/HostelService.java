@@ -27,4 +27,7 @@ public class HostelService {
     public Hostel updateHostel(Hostel hostel){
         return hostelRepository.save(hostel);
     }
+    public void deleteHostelById(String id){
+        hostelRepository.deleteById(id);
+    }
 }
