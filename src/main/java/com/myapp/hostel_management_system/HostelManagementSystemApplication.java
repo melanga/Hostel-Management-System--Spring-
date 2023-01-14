@@ -1,23 +1,19 @@
 package com.myapp.hostel_management_system;
 
-import com.myapp.hostel_management_system.entity.Student;
-import com.myapp.hostel_management_system.entity.User;
-import com.myapp.hostel_management_system.repository.StudentRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class HostelManagementSystemApplication  implements CommandLineRunner {
+public class HostelManagementSystemApplication implements CommandLineRunner {
 
-	public static void main(String[] args) {
-		SpringApplication.run(HostelManagementSystemApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(HostelManagementSystemApplication.class, args);
+    }
 
 
+    @Override
+    public void run(String... args) throws Exception {
 
-	@Override
-	public void run(String... args) throws Exception {
-
-	}
+    }
 }

@@ -4,7 +4,6 @@ import com.myapp.hostel_management_system.util.MD5;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDateTime;
 
@@ -19,7 +18,7 @@ public class User {
     private String firstname;
     @Column
     private String lastname;
-    @Column
+    @Column(unique = true)
     private String email;
     @Column
     private String password;
