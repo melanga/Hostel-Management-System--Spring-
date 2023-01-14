@@ -5,15 +5,18 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "students")
 public class Student extends User {
-//    @ManyToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "hostel_id")
-//    private Hostel hostel;
+    @ManyToOne(cascade = CascadeType.DETACH)
+    @JoinColumn(name = "hostel_id")
+    private Hostel hostel;
 
-    public Student(){}
-    public Student(String firstname,String lastname,String email) {
-       super();
-        this.setFirstname(firstname);
-        this.setLastname(lastname);
-        this.setEmail(email);
+    public Student() {
+    }
+
+    public Hostel getHostel() {
+        return hostel;
+    }
+
+    public void setHostel(Hostel hostel) {
+        this.hostel = hostel;
     }
 }

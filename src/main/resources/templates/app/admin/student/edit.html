@@ -1,78 +1,89 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>Add Students </title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <title>Add Students </title>
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" rel="stylesheet">
 </head>
 <body>
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-  <!-- Brand -->
-  <a class="navbar-brand" href="#">Hostel Management System</a>
+    <!-- Brand -->
+    <a class="navbar-brand" href="#">Hostel Management System</a>
 
-  <!-- Toggler/collapsibe Button -->
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+    <!-- Toggler/collapsibe Button -->
+    <button class="navbar-toggler" data-target="#collapsibleNavbar" data-toggle="collapse" type="button">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-  <!-- Navbar links -->
-  <div class="collapse navbar-collapse" id="collapsibleNavbar">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" th:href="@{/admin-students}"> Student List</a>
-      </li>
-    </ul>
-  </div>
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/admin-students}"> Student List</a>
+            </li>
+        </ul>
+    </div>
 </nav>
 <br>
 <br>
-<div class = "container">
-  <div class = "row">
-    <div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
-      <h1 class = "text-center"> Update New Student </h1>
-      <div class = "card-body">
-        <form action="/admin-students" method="POST">
-          <div class ="form-group">
-            <label> Student First Name </label>
-            <input
-                    type = "text"
-                    name = "firstname"
-                    class = "form-control"
-                    placeholder="Enter Student First Name"
-            />
-          </div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+            <h1 class="text-center"> Update Student </h1>
+            <div class="card-body">
+                <form method="POST" th:action="@{/admin-students/{id}(id=${student.id})}">
+                    <div class="form-group">
+                        <label> Student First Name </label>
+                        <input
+                                class="form-control"
+                                name="firstname"
+                                placeholder="Enter Student First Name"
+                                th:value="${student.firstname}"
+                                type="text"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label> Student Last Name </label>
+                        <input
+                                class="form-control"
+                                name="lastname"
+                                placeholder="Enter Student Last Name"
+                                th:value="${student.lastname}"
+                                type="text"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label> Student Email </label>
+                        <input
+                                class="form-control"
+                                name="email"
+                                placeholder="Enter Student Email"
+                                th:value="${student.email}"
+                                type="text"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label for="hostel">Example select</label>
+                        <select class="form-control" id="hostel" name="hostel">
+                            <option value="remove-hostel">No Hostel</option>
+                            <option th:each="hostel: ${hostels}"
+                                    th:selected="${hostel.id == student.hostel?.id}"
+                                    th:text="${hostel.getName()}"
+                                    th:value="${hostel.id}"
+                            ></option>
+                        </select>
+                    </div>
+                    <div class="box-footer">
+                        <button class="btn btn-primary" type="submit">
+                            Submit
+                        </button>
+                    </div>
+                </form>
 
-          <div class ="form-group">
-            <label> Student Last Name </label>
-            <input
-                    type = "text"
-                    name = "lastname"
-
-                    class = "form-control"
-                    placeholder="Enter Student Last Name"
-            />
-          </div>
-
-          <div class ="form-group">
-            <label> Student Email </label>
-            <input
-                    type = "text"
-                    name = "email"
-
-                    class = "form-control"
-                    placeholder="Enter Student Email"
-            />
-          </div>
-          <div class = "box-footer">
-            <button type="submit" class = "btn btn-primary">
-              Submit
-            </button>
-          </div>
-        </form>
-
-      </div>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 </body>
 </html>

@@ -6,7 +6,6 @@ import com.myapp.hostel_management_system.repository.StudentRepository;
 import com.myapp.hostel_management_system.repository.UserRepository;
 import com.myapp.hostel_management_system.repository.WardenRepository;
 import com.myapp.hostel_management_system.service.AuthorizeService;
-import com.myapp.hostel_management_system.util.MD5;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -16,10 +16,10 @@ public class Hostel {
     @Column
     private String address;
     @Column
-    private String capacity;
+    private int capacity;
 
-//    @OneToMany(mappedBy = "hostel")
-//    private List<Student> students;
+    @OneToMany(mappedBy = "hostel")
+    private List<Student> students;
 
     public Hostel() {
     }
@@ -40,11 +40,11 @@ public class Hostel {
         this.address = address;
     }
 
-    public String getCapacity() {
+    public int getCapacity() {
         return capacity;
     }
 
-    public void setCapacity(String capacity) {
+    public void setCapacity(int capacity) {
         this.capacity = capacity;
     }
 
