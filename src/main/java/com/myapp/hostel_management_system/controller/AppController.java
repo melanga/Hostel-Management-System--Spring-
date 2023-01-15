@@ -1,5 +1,6 @@
 package com.myapp.hostel_management_system.controller;
 
+import com.myapp.hostel_management_system.entity.Student;
 import com.myapp.hostel_management_system.entity.User;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
@@ -17,13 +18,12 @@ public class AppController {
         model.addAttribute("user", user);
         if (user == null) {
             return "redirect:/login";
+        } else {
+            if (user instanceof Student) {
+                return "app/student/index";
+            } else {
+                return "app/admin/student/index";
+            }
         }
-        return "app/home";
-    }
-
-    @GetMapping("/greeting")
-    public String greeting(@RequestParam(name = "name", required = false, defaultValue = "World") String name, Model model) {
-        model.addAttribute("name", name);
-        return "app/error";
     }
 }

@@ -7,13 +7,14 @@
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" rel="stylesheet">
 </head>
 <body>
+<div th:replace="app/admin/general :: warden-navbar"></div>
 <div class="container">
     <div class="row">
         <h1>List Students</h1>
     </div>
     <div class="row">
         <div class="col-lg-3">
-            <a class="btn btn-primary  btn-sm mb-3" th:href="@{/admin-students/add}">Add Students</a>
+            <a class="btn btn-primary  btn-sm mb-3" th:href="@{/admin-students/add}">Students</a>
         </div>
     </div>
     <table class="table table-striped table-bordered">

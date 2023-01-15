@@ -3,68 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <title>Add Students </title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" rel="stylesheet">
 </head>
 <body>
-<nav class="navbar navbar-expand-md bg-dark navbar-dark">
-    <!-- Brand -->
-    <a class="navbar-brand" href="#">Hostel Management System</a>
-
-    <!-- Toggler/collapsibe Button -->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <!-- Navbar links -->
-    <div class="collapse navbar-collapse" id="collapsibleNavbar">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/hostels}">Hostel List</a>
-            </li>
-        </ul>
-    </div>
-</nav>
-<br>
-<br>
-<div class = "container">
-    <div class = "row">
-        <div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
-            <h1 class = "text-center"> Create New Hostel </h1>
-            <div class = "card-body">
+<div th:replace="app/admin/general :: warden-navbar"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+            <h1 class="text-center"> Create New Hostel </h1>
+            <div class="card-body">
                 <form action="/hostels" method="POST">
-                    <div class ="form-group">
+                    <div class="form-group">
                         <label> Hostel Name </label>
                         <input
-                                type = "text"
-                                name = "name"
-                                class = "form-control"
+                                class="form-control"
+                                name="name"
                                 placeholder="Enter Hostel Name"
+                                type="text"
                         />
                     </div>
 
-                    <div class ="form-group">
+                    <div class="form-group">
                         <label> Hostel Address </label>
                         <input
-                                type = "text"
-                                name = "address"
+                                class="form-control"
+                                name="address"
 
-                                class = "form-control"
                                 placeholder="Enter Hostel Address"
+                                type="text"
                         />
                     </div>
 
-                    <div class ="form-group">
+                    <div class="form-group">
                         <label> Hostel Capacity </label>
                         <input
-                                type = "text"
-                                name = "capacity"
+                                class="form-control"
+                                name="capacity"
 
-                                class = "form-control"
                                 placeholder="Enter Hostel Capacity "
+                                type="text"
                         />
                     </div>
-                    <div class = "box-footer">
-                        <button type="submit" class = "btn btn-primary">
+                    <div class="box-footer">
+                        <button class="btn btn-primary" type="submit">
                             Submit
                         </button>
                     </div>

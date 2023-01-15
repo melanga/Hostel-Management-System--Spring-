@@ -62,7 +62,6 @@ public class AuthController {
         User dbUser = userRepository.getReferenceByEmail(user.getEmail());
         if (dbUser != null) {
             if (dbUser.getPassword().equals(user.getPassword())) {
-                System.out.println("Login success");
                 model.addAttribute("msg", "Welcome " + dbUser.getFirstname() + " " + dbUser.getLastname());
                 session.setAttribute("user", dbUser);
                 return "redirect:/home";
@@ -78,6 +77,6 @@ public class AuthController {
     @GetMapping("/logout")
     public String logoutUser(HttpServletRequest request) {
         request.getSession().invalidate();
-        return "app/home";
+        return "redirect:/";
     }
 }

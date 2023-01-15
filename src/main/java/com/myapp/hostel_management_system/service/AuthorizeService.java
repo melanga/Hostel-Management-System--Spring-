@@ -41,7 +41,7 @@ public class AuthorizeService {
     public boolean warden() {
         User user = (User) request.getSession().getAttribute("user");
         if (user != null) {
-            return wardenRepository.existsById(user.getId());
+            return wardenRepository.existsById(user.getId()) || !studentRepository.existsById(user.getId());
         }
         return false;
     }
