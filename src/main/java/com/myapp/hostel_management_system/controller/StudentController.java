@@ -39,7 +39,6 @@ public class StudentController {
     @GetMapping("/admin-students/add")
     public String createStudents(Model model) {
         if (authorizeService.warden()) {
-            Student student = new Student();
             model.addAttribute("students", studentService.getAllStudents());
             return "app/admin/student/add";
         } else {
@@ -54,9 +53,14 @@ public class StudentController {
                 if (student.getPassword() == null) {
                     student.setPassword("abcd1234");
                 }
-                studentService.studentSave(student);
-                redirectAttributes.addFlashAttribute("success", "Student added successfully");
-                return "redirect:/admin-students";
+                if (student.getEmail().endsWith("@std.uwu.ac.lk")) {
+                    studentService.studentSave(student);
+                    redirectAttributes.addFlashAttribute("success", "Student added successfully");
+                    return "redirect:/admin-students";
+                } else {
+                    redirectAttributes.addFlashAttribute("error", "Only university provided emails are supported");
+                    return "redirect:/admin-students";
+                }
             } catch (Exception e) {
                 redirectAttributes.addFlashAttribute("error", "an error occurred");
                 return "redirect:/admin-students";
@@ -82,8 +86,11 @@ public class StudentController {
                                 @ModelAttribute("students") Student student, RedirectAttributes redirectAttributes) {
         if (authorizeService.warden()) {
             try {
-                studentService.updateStudent(student);
-                redirectAttributes.addFlashAttribute("success", "Student updated successfully");
+                if (studentService.updateStudent(student)) {
+                    redirectAttributes.addFlashAttribute("success", "Student updated successfully");
+                } else {
+                    redirectAttributes.addFlashAttribute("error", "hostel is full");
+                }
                 return "redirect:/admin-students";
             } catch (Exception e) {
                 redirectAttributes.addFlashAttribute("error", "an error occurred");

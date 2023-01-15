@@ -8,26 +8,30 @@ import java.util.List;
 
 @Service
 public class HostelService {
-    private HostelRepository hostelRepository;
+    private final HostelRepository hostelRepository;
 
     public HostelService(HostelRepository hostelRepository) {
         this.hostelRepository = hostelRepository;
+    }
+
+    public int countAllStudents(Hostel hostel) {
+        return hostelRepository.countAllByStudents(hostel);
     }
 
     public List<Hostel> getAllHostel() {
         return hostelRepository.findAll();
     }
 
-    public Hostel hostelSave(Hostel hostel) {
-        return hostelRepository.save(hostel);
+    public void hostelSave(Hostel hostel) {
+        hostelRepository.save(hostel);
     }
 
     public Hostel getHostelById(String id) {
         return hostelRepository.findById(id).get();
     }
 
-    public Hostel updateHostel(Hostel hostel) {
-        return hostelRepository.save(hostel);
+    public void updateHostel(Hostel hostel) {
+        hostelRepository.save(hostel);
     }
 
     public void deleteHostelById(String id) {

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>update warden</title>
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" rel="stylesheet">
+</head>
+<body>
+<div th:replace="app/admin/general :: warden-navbar"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+            <h1 class="text-center"> Update Warden </h1>
+            <div class="card-body">
+                <form method="POST" th:action="@{/warden/edit/{id}(id=${warden.id})}">
+                    <div class="form-group">
+                        <label> Warden First Name </label>
+                        <input
+                                class="form-control"
+                                name="firstname"
+                                placeholder="Enter Student First Name"
+                                th:value="${warden.firstname}"
+                                type="text"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label> Warden Last Name </label>
+                        <input
+                                class="form-control"
+                                name="lastname"
+                                placeholder="Enter Student Last Name"
+                                th:value="${warden.lastname}"
+                                type="text"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label> Warden Email </label>
+                        <input
+                                class="form-control"
+                                name="email"
+                                placeholder="Enter Student Email"
+                                th:value="${warden.email}"
+                                type="text"
+                        />
+                    </div>
+                    <div class="box-footer">
+                        <button class="btn btn-primary" type="submit">
+                            Submit
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
