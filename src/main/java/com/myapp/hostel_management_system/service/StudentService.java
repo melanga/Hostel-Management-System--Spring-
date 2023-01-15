@@ -31,8 +31,13 @@ public class StudentService {
         return studentRepository.findById(id).get();
     }
 
-    public Student updateStudent(Student student) {
-        return studentRepository.save(student);
+    public void updateStudent(Student student) {
+        Student existingStudent = studentRepository.getReferenceById(student.getId());
+        existingStudent.setFirstname(student.getFirstname());
+        existingStudent.setLastname(student.getLastname());
+        existingStudent.setEmail(student.getEmail());
+        existingStudent.setHostel(student.getHostel());
+        studentRepository.save(existingStudent);
     }
 
     public void deleteStudentById(String id) {
@@ -42,5 +47,9 @@ public class StudentService {
     public void addHostel(Student student, Hostel hostel) {
         student.setHostel(hostel);
         studentRepository.save(student);
+    }
+
+    public Student getStudent(String id) {
+        return studentRepository.findById(id).get();
     }
 }

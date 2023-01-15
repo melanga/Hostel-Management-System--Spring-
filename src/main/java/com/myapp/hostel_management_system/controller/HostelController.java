@@ -7,11 +7,11 @@ import com.myapp.hostel_management_system.service.HostelService;
 import com.myapp.hostel_management_system.service.StudentService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 //@RequestMapping("/hostels")
@@ -49,10 +49,16 @@ public class HostelController {
     }
 
     @PostMapping("/hostels")
-    public String saveHostel(Hostel hostel, BindingResult result) {
+    public String saveHostel(Hostel hostel, RedirectAttributes redirectAttributes) {
         if (authorizeService.warden()) {
-            hostelService.hostelSave(hostel);
-            return "redirect:/hostels";
+            try {
+                hostelService.hostelSave(hostel);
+                redirectAttributes.addFlashAttribute("success", "Hostel added successfully");
+                return "redirect:/hostels";
+            } catch (Exception e) {
+                redirectAttributes.addFlashAttribute("error", "an error occurred");
+                return "redirect:/hostels/add";
+            }
         } else {
             return "redirect:/";
         }
@@ -71,25 +77,37 @@ public class HostelController {
     @PostMapping("/hostels/{id}")
     public String updateHostel(@PathVariable String id,
                                @ModelAttribute("hostels") Hostel hostel,
-                               Model model) {
+                               RedirectAttributes redirectAttributes) {
         if (authorizeService.warden()) {
-            Hostel existingHostel = hostelService.getHostelById(id);
-            existingHostel.setId(id);
-            existingHostel.setName(hostel.getName());
-            existingHostel.setAddress(hostel.getAddress());
-            existingHostel.setCapacity(hostel.getCapacity());
-            hostelService.updateHostel(existingHostel);
-            return "redirect:/hostels";
+            try {
+                Hostel existingHostel = hostelService.getHostelById(id);
+                existingHostel.setId(id);
+                existingHostel.setName(hostel.getName());
+                existingHostel.setAddress(hostel.getAddress());
+                existingHostel.setCapacity(hostel.getCapacity());
+                hostelService.updateHostel(existingHostel);
+                redirectAttributes.addFlashAttribute("success", "Hostel updated successfully");
+                return "redirect:/hostels";
+            } catch (Exception e) {
+                redirectAttributes.addFlashAttribute("error", "an error occurred");
+                return "redirect:/hostels";
+            }
         } else {
             return "redirect:/";
         }
     }
 
     @GetMapping("/hostels/{id}")
-    public String deleteHostel(@PathVariable String id) {
+    public String deleteHostel(@PathVariable String id, RedirectAttributes redirectAttributes) {
         if (authorizeService.warden()) {
-            hostelService.deleteHostelById(id);
-            return "redirect:/hostels";
+            try {
+                hostelService.deleteHostelById(id);
+                redirectAttributes.addFlashAttribute("success", "Hostel deleted successfully");
+                return "redirect:/hostels";
+            } catch (Exception e) {
+                redirectAttributes.addFlashAttribute("error", "an error occurred");
+                return "redirect:/hostels";
+            }
         } else {
             return "redirect:/";
         }

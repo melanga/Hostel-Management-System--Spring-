@@ -41,7 +41,19 @@
                             <div class="mb-3">
                                 <button class="btn btn-primary d-block w-100" type="submit">Sign up</button>
                             </div>
-                            <p class="text-muted">Forgot your password?</p>
+                            <!--error show-->
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert" th:if="${error}">
+                                <strong>Error!</strong> <span th:text="${error}"></span>
+                                <button aria-label="Close" class="close" data-dismiss="alert" type="button">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="alert alert-success alert-dismissible fade show" role="alert" th:if="${msg}">
+                                <strong>Success!</strong> <span th:text="${msg}"></span>
+                                <button aria-label="Close" class="close" data-dismiss="alert" type="button">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
                         </form>
                     </div>
                 </div>

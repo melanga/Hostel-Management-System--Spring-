@@ -6,11 +6,11 @@ import com.myapp.hostel_management_system.service.HostelService;
 import com.myapp.hostel_management_system.service.StudentService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 //@RequestMapping("/admin")
@@ -48,13 +48,19 @@ public class StudentController {
     }
 
     @PostMapping("/admin-students")
-    public String saveStudent(@ModelAttribute("students") Student student, BindingResult result) {
+    public String saveStudent(@ModelAttribute("students") Student student, RedirectAttributes redirectAttributes) {
         if (authorizeService.warden()) {
-            if (student.getPassword() == null) {
-                student.setPassword("abcd1234");
+            try {
+                if (student.getPassword() == null) {
+                    student.setPassword("abcd1234");
+                }
+                studentService.studentSave(student);
+                redirectAttributes.addFlashAttribute("success", "Student added successfully");
+                return "redirect:/admin-students";
+            } catch (Exception e) {
+                redirectAttributes.addFlashAttribute("error", "an error occurred");
+                return "redirect:/admin-students";
             }
-            studentService.studentSave(student);
-            return "redirect:/admin-students";
         } else {
             return "redirect:/";
         }
@@ -73,26 +79,32 @@ public class StudentController {
 
     @PostMapping("/admin-students/{id}")
     public String updateStudent(@PathVariable String id,
-                                @ModelAttribute("students") Student student) {
+                                @ModelAttribute("students") Student student, RedirectAttributes redirectAttributes) {
         if (authorizeService.warden()) {
-            Student existingStudent = studentService.getStudentById(id);
-            existingStudent.setId(id);
-            existingStudent.setFirstname(student.getFirstname());
-            existingStudent.setLastname(student.getLastname());
-            existingStudent.setEmail(student.getEmail());
-            existingStudent.setHostel(student.getHostel());
-            studentService.updateStudent(existingStudent);
-            return "redirect:/admin-students";
+            try {
+                studentService.updateStudent(student);
+                redirectAttributes.addFlashAttribute("success", "Student updated successfully");
+                return "redirect:/admin-students";
+            } catch (Exception e) {
+                redirectAttributes.addFlashAttribute("error", "an error occurred");
+                return "redirect:/admin-students";
+            }
         } else {
             return "redirect:/";
         }
     }
 
     @GetMapping("/admin-students/{id}")
-    public String deleteStudent(@PathVariable String id) {
+    public String deleteStudent(@PathVariable String id, RedirectAttributes redirectAttributes) {
         if (authorizeService.warden()) {
-            studentService.deleteStudentById(id);
-            return "redirect:/admin-students";
+            try {
+                studentService.deleteStudentById(id);
+                redirectAttributes.addFlashAttribute("success", "Student deleted successfully");
+                return "redirect:/admin-students";
+            } catch (Exception e) {
+                redirectAttributes.addFlashAttribute("error", "an error occurred");
+                return "redirect:/admin-students";
+            }
         } else {
             return "redirect:/";
         }

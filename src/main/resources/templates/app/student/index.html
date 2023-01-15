@@ -6,6 +6,13 @@
 </head>
 <body>
 <h1>Student Home Page</h1>
-<p th:text="${user?.getFirstname}"></p>
+<h3 th:text="'Hello ' + ${user?.firstname} + ' ' + ${user?.lastname}"></h3>
+<div th:if="${user.hostel != null}">
+    <p th:text="'your hostel is '+${user?.hostel?.name}"></p>
+    <p th:text="'located at ' + ${user?.hostel?.address}"></p>
+</div>
+<div th:unless="${user.hostel != null}">
+    <p>Sorry! Hostel Not Assigned yet...</p>
+</div>
 </body>
 </html>

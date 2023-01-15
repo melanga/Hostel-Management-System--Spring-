@@ -37,7 +37,14 @@
                             <div class="mb-3">
                                 <button class="btn btn-primary d-block w-100" type="submit">Login</button>
                             </div>
-                            <p class="text-muted" th:text="${error}"></p>
+                            <!--error show-->
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert" th:if="${error}">
+                                <strong>Error!</strong> <span th:text="${error}"></span>
+                                <button aria-label="Close" class="close" data-dismiss="alert" type="button">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <p class="small">Don't have an account? <a href="/register">Sign up</a></p>
                         </form>
                     </div>
                 </div>

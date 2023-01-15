@@ -39,6 +39,20 @@
         </tr>
         </tbody>
     </table>
+    <!--success show-->
+    <div class="alert alert-success alert-dismissible fade show" role="alert" th:if="${success}">
+        <strong>Success!</strong> <span th:text="${success}"></span>
+        <button aria-label="Close" class="close" data-dismiss="alert" type="button">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <!--error show-->
+    <div class="alert alert-danger alert-dismissible fade show" role="alert" th:if="${error}">
+        <strong>Error!</strong> <span th:text="${error}"></span>
+        <button aria-label="Close" class="close" data-dismiss="alert" type="button">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
 </div>
 </body>
 </html>
