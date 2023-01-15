@@ -1,0 +1,344 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+:root {
+    --main-color: #122134;
+    --secondary-color: #BE823C;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    color: var(--main-color);
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+    background-color: var(--main-color);
+    overflow-x: hidden;
+}
+
+p {
+    margin: 5px;
+    padding: 0;
+}
+
+.navbar {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    /* background-color: var(--main-color); */
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100vw;
+    height: 80px;
+    color: #fff;
+    z-index: 1000;
+}
+
+.navbar h3 {
+    padding: 30px;
+}
+
+.navbar-logo img {
+    height: 50px;
+}
+
+.navbar-menu-desktop {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    width: 50%;
+}
+
+.navbar-menu-desktop h3 {
+    font-weight: 300;
+}
+
+.navbar-menu-desktop h3:hover {
+    font-weight: 600;
+}
+
+.nav-image img {
+    width: 100vw;
+    height: auto;;
+}
+
+@media screen and (max-width: 768px) {
+    .navbar-menu-desktop {
+        display: none;
+    }
+
+    .navbar-title {
+        font-size: 0.6em;
+    }
+
+    .hero-button {
+        top: 10vh;;
+        left: 10vw;
+    }
+}
+
+
+.hero-button {
+    position: absolute;
+    bottom: 40vh;
+    left: 10vw;
+}
+
+.hero-button p {
+    font-size: 1.5em;
+    font-weight: 600;
+    color: #fff;
+    margin: 0;
+}
+
+
+.button-36 {
+    background-image: linear-gradient(92.88deg, var(--secondary-color) 9.16%, #d6a810 43.89%, #c59700 64.72%);
+    border-radius: 30px;
+    border-style: none;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    flex-shrink: 0;
+    font-family: "Inter UI", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    height: 3rem;
+    padding: 0 1.6rem;
+    text-align: center;
+    text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
+    transition: all .5s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.button-36:hover {
+    box-shadow: rgba(255, 209, 4, 0.589) 0 1px 30px;
+    transition-duration: .1s;
+}
+
+@media (min-width: 768px) {
+    .button-36 {
+        padding: 0 2.6rem;
+    }
+
+}
+
+@media screen and (max-width: 768px) {
+    .hero-button {
+        font-size: 0.6em;
+        top: 180px;
+    }
+
+    .nav-image img {
+        height: 50vh;
+        object-fit: cover;
+    }
+
+}
+
+/* --------------------------------------------abiuttttttttttttttt */
+
+.about-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100vw;
+}
+
+.about {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    padding: 50px;
+    color: #fff;
+    width: 50%;
+}
+
+.about-image img {
+    height: 200px;;
+}
+
+.about-image-desktop img {
+    height: 200px;;
+}
+
+.about-details {
+    padding: 50px;
+}
+
+.about-image-mobile {
+    display: none;
+}
+
+.about-image-mobile img {
+    height: 200px;;
+}
+
+.navbar-menu-mobile {
+    display: none;
+
+}
+
+.navbar-menu-mobile-names {
+    display: none;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    .about {
+        flex-direction: column;
+        width: 100%;
+        padding: 20px;
+    }
+
+    .about-image img {
+        height: 200px;
+    }
+
+    .about-details {
+        padding: 20px;
+        bottom: 10px;
+    }
+
+    .about-image-mobile {
+        display: block;
+    }
+
+    .about-image-desktop {
+        display: none;
+    }
+
+    .navbar-menu-mobile {
+        display: block;
+    }
+
+    .navbar-menu-mobile img {
+        height: 20px;
+    }
+
+    .navbar-menu-mobile {
+        display: block;
+    }
+
+    .navbar {
+        padding: 0;
+        margin: 0;
+        position: fixed;
+    }
+
+    .navbar-menu-mobile-names {
+        color: #fff;
+        width: 100vw;
+        position: fixed;
+        z-index: 100000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        backdrop-filter: blur(10px);
+        background-color: rgba(0, 0, 0, 0.3);
+        bottom: -100%;
+        transition: 0.5s;
+
+    }
+
+    .navbar-menu-mobile-names.active {
+        bottom: 0;
+    }
+
+    .navbar-menu-mobile-names a {
+        text-decoration: none;
+        color: #fff;
+    }
+
+    .navbar-menu-mobile-names a img {
+        height: 30px;
+    }
+}
+
+
+/*dwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww*/
+
+.contact-container {
+    color: #fff;
+    background-color: #000a18;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+    width: 100vw;
+    border-bottom: 2px solid var(--secondary-color);
+}
+
+.contact-emer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+}
+
+.contact-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* border-left: 3px solid var(--secondary-color);
+    border-right: 3px solid var(--secondary-color); */
+    height: 300px;
+}
+
+.contact-links {
+    text-decoration: none;
+    color: #fff;
+
+}
+
+.contact-links:hover {
+    color: #d6a810;
+}
+
+.contact-otherlinks {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100vw;
+    background-color: #000a18;
+    color: #fff;
+    height: 100px;
+}
+
+@media screen and (max-width: 768px) {
+    .contact-container {
+        flex-direction: column;
+
+    }
+
+    .contact-form {
+        /* border-top: 3px solid var(--secondary-color);
+        border-bottom: 3px solid var(--secondary-color); */
+        border-left: none;
+        border-right: none;
+    }
+
+    .footer {
+        font-size: 0.6em;;
+    }
+}
+    
